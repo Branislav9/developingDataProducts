@@ -1,0 +1,51 @@
+Course Project: Shiny Application and Reproducible Pitch
+========================================================
+author: Branislav Adamovic
+date: December 15, 2017
+autosize: true
+
+Summary
+========================================================
+
+- This is the final presentation for the **"Developing Data Products"** Course Project.
+- This course is part of the **"Data Science Specialization"**.
+- This assignment has two parts:
+  + creating a shiny application
+  + creating a pitch for the application using **Rstudio Presenter**.
+
+
+Dataset
+========================================================
+
+```{r}
+library(ggplot2)
+str(mpg)
+```
+
+Predicted variables
+========================================================
+
+```{r, echo=FALSE}
+
+library(gridExtra)
+
+plot1<-ggplot(mpg, aes(displ, cty))+geom_point(aes(color=class), alpha=.2, size=3)+
+        labs(x = "Displacement", y = "MPG in city")
+        
+plot2<-ggplot(mpg, aes(displ, hwy))+geom_point(aes(color=class), alpha=.2, size=3)+
+        labs(x = "Displacement", y = "MPG on highway")
+
+grid.arrange(plot1, plot2, ncol=2, top="Displacement vs MPG")
+
+```
+
+- In our application we will predict Mileage per Gallon in city (variable "cty") and on highway(variable "hwy").
+
+Shiny application
+========================================================
+
+- The objective of the shiny application is to predict Mileage per Gallon in city and on highway with changing of displacement. For this reason 
+there were build 2 linear models and put in one plot. You can select also between different car classes. You can show/hide both models and also to
+see applied displacement you can show/hide a line showing yor choice. 
+- Application can be found [here](http://brano.shinyapps.io/MPG_displ/).
+- Source code can be found [here]().
